@@ -25,4 +25,4 @@
       iam_user:
         name: "{{ username }}"
         state: present
-        password: "Initailpassw0rd"
+        password: 'Welcome@123456'
