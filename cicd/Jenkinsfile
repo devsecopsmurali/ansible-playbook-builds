@@ -1,0 +1,69 @@
+pipeline {
+    agent any
+    environment {
+        AWS_ACCESS_KEY_ID = credentials('AWS')
+        AWS_SECRET_ACCESS_KEY = credentials('AWS')
+        SENDER_EMAIL="devsecopsmurali@gmail.com"
+    } 
+    
+     parameters {
+        string(name: 'USERNAME', defaultValue: '', description: 'Enter the username')
+        string(name: 'USER_EMAIL', defaultValue: '', description: 'Enter the user email')
+    }
+    
+    stages {
+      
+	stage('Checkout') {
+            steps {
+                git credentialsId: 'Githubcreds', branch: 'main', url: 'https://github.com/devsecopsmurali/ansible-playbook-builds.git'
+            }
+        }
+       stage('Execute Ansible playbook') {
+            steps {
+                ansiblePlaybook playbook: 'create_users.yml',
+                 extraVars: [
+                            username: "${params.USERNAME}",
+                            useremail: "${params.USER_EMAIL}",
+                           ]
+            }
+        }
+    
+  
+}
+
+post {
+   
+    always {
+        emailext(
+           subject: "Jenkins Pipeline Successful: ${currentBuild.fullDisplayName}",
+           body: "The Jenkins Pipeline ${currentBuild.fullDisplayName} was successful.",
+           to: "devsecopsmurali@gmail.com",
+           recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], 
+           from: env.SENDER_EMAIL,
+        )
+        ansiblePlaybook (
+                    playbook: 'create_users.yml',
+                    extraVars: [
+                        useremail: "${params.USER_EMAIL}",
+                    ]
+                )
+    }
+
+failure {
+            script {
+                emailext (
+                    subject: "Jenkins Pipeline Failed: ${currentBuild.fullDisplayName}",
+                    body: "The Jenkins Pipeline ${currentBuild.fullDisplayName} failed.",
+                    to: "devsecopsmurali@gmail.com", // Replace with recipient email address
+                    from: env.SENDER_EMAIL, // Replace with sender email address
+                )
+                ansiblePlaybook (
+                    playbook: 'create_users.yml',
+                    extraVars: [
+                        useremail: "${params.USER_EMAIL}",
+                    ]
+                )
+            }
+        }
+
+}}
