@@ -15,7 +15,7 @@ pipeline {
       
 	stage('Checkout') {
             steps {
-                git credentialsId: 'Githubcreds', branch: 'main', url: 'https://github.com/devsecopsmurali/ansible-playbook-builds.git'
+                git credentialsId: 'Githubcreds', branch: 'create_users', url: 'https://github.com/devsecopsmurali/ansible-playbook-builds.git'
             }
         }
        stage('Execute Ansible playbook') {
