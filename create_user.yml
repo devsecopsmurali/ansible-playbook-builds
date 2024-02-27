@@ -3,7 +3,7 @@
   hosts: localhost
   connection: local
   gather_facts: false
-  become: false
+  become: true
   vars:
     ansible_python_interpreter: /usr/bin/python3
 
@@ -20,7 +20,9 @@
     # - name: Display Generated Password for testing purpose
     #   debug:
     #     var: generated_password.password
-    
+    - name: Print Sender's Email ID
+      debug:
+        msg: "Sender's Email ID: {{ username }}"
     - name: Create IAM Users
       iam_user:
         name: "{{ username }}"
