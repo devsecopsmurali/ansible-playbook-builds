@@ -20,7 +20,7 @@ pipeline {
         }
        stage('Execute Ansible playbook') {
             steps {
-                ansiblePlaybook playbook: 'create_users.yml',
+                ansiblePlaybook playbook: 'create_user.yml',
                  extraVars: [
                             username: "${params.USERNAME}",
                             useremail: "${params.USER_EMAIL}",
@@ -42,7 +42,7 @@ post {
            from: env.SENDER_EMAIL,
         )
         ansiblePlaybook (
-                    playbook: 'create_users.yml',
+                    playbook: 'create_user.yml',
                     extraVars: [
                         useremail: "${params.USER_EMAIL}",
                     ]
@@ -58,7 +58,7 @@ failure {
                     from: env.SENDER_EMAIL, // Replace with sender email address
                 )
                 ansiblePlaybook (
-                    playbook: 'create_users.yml',
+                    playbook: 'create_user.yml',
                     extraVars: [
                         useremail: "${params.USER_EMAIL}",
                     ]
