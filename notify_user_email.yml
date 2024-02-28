@@ -1,0 +1,26 @@
+---
+- name: Create IAM User and Notify User
+  hosts: localhost
+  gather_facts: false
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+  tasks:
+    - name: Print Sender's Email ID
+      debug:
+        msg: "Sender's Email ID: {{ useremail }}"
+    
+    # - name: Send Email Notification
+    #   mail:
+    #     subject: "{{ email_subject }}"
+    #     body: "{{ email_body }}"
+    #     to: "{{ useremail }}"  # Replace with the user's email address
+    #     from: "{{ useremail }}"  # Replace with the sender's email address
+    #     smtp_host: "smtp.example.com"  # Replace with your SMTP server host
+    #     smtp_port: 587
+    #     smtp_username: "your_smtp_username"
+    #     smtp_password: "your_smtp_password"
+    #     starttls: yes
+    #   when: iam_user_info.changed
+
+    #    username: "${params.USERNAME}",
+    #                         useremail: "${params.USER_EMAIL}",

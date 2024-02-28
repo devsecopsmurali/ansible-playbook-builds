@@ -21,10 +21,10 @@ pipeline {
        stage('Execute Ansible playbook') {
             steps {
                 ansiblePlaybook playbook: 'create_user.yml',
-                 extraVars: [
-                            username: "${params.USERNAME}",
-                            useremail: "${params.USER_EMAIL}",
-                           ]
+                //  extraVars: [
+                //             username: "${params.USERNAME}",
+                //             useremail: "${params.USER_EMAIL}",
+                //            ]
             }
         }
     
