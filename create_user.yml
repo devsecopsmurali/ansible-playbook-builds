@@ -34,7 +34,7 @@
 ---
 - hosts: localhost
   vars:
-    username: {{ username }}
+    username: "{{ username }}"
   tasks:
     - name: Print Sender's Email ID
       debug:
