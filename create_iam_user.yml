@@ -9,6 +9,10 @@
     iam_user_name: "{{ iam_user_name | default('new_user') }}"
 
   tasks:
+
+    - name: Print Sender's Email ID
+      debug:
+        msg: "Sender's Email ID: {{ iam_user_name }}"
     - name: Create IAM User
       community.aws.iam_user:
         name: "{{ iam_user_name }}"
