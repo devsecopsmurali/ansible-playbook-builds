@@ -4,12 +4,12 @@
   gather_facts: false
 
   vars:
-    aws_access_key: "{{ aws_access_key }}"
-    aws_secret_key: "{{ aws_secret_key }}"
-    iam_user_name: "{{ iam_user_name | default('new_user') }}"
+    ansible_python_interpreter: /usr/bin/python3
+    # aws_access_key: "{{ aws_access_key }}"
+    # aws_secret_key: "{{ aws_secret_key }}"
+    # iam_user_name: "{{ iam_user_name | default('new_user') }}"
 
   tasks:
-
     - name: Print Sender's Email ID
       debug:
         msg: "Sender's Email ID: {{ iam_user_name }}"
