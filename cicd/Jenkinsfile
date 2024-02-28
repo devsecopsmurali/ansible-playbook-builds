@@ -19,33 +19,33 @@ pipeline {
             }
         }
 
-     stage('Create IAM User') {
-            steps {
-                script {
-                    sh 'pip install boto3'
-                    sh 'ansible-galaxy collection install community.aws'
-
-                    ansiblePlaybook(
-                        playbook: 'create_iam_user.yml',
-                        inventory: 'localhost,',
-                        extraVars: [
-                            "iam_user_name=${params.USERNAME}",
-                            "aws_access_key=${AWS_ACCESS_KEY_ID}",
-                            "aws_secret_key=${AWS_SECRET_ACCESS_KEY}"
-                        ]
-                    )
-                }
-            }
-        }
-    //    stage('Execute Ansible playbook') {
+    //  stage('Create IAM User') {
     //         steps {
-    //             ansiblePlaybook playbook: 'create_user.yml',
-    //              extraVars: [
-    //                         "username: "${params.USERNAME}",
-    //                         "useremail: "${params.USER_EMAIL}",
-    //                        ]
+    //             script {
+    //                 sh 'pip install boto3'
+    //                 sh 'ansible-galaxy collection install community.aws'
+
+    //                 ansiblePlaybook(
+    //                     playbook: 'create_iam_user.yml',
+    //                     inventory: 'localhost,',
+    //                     extraVars: [
+    //                         "iam_user_name=${params.USERNAME}",
+    //                         "aws_access_key=${AWS_ACCESS_KEY_ID}",
+    //                         "aws_secret_key=${AWS_SECRET_ACCESS_KEY}"
+    //                     ]
+    //                 )
+    //             }
     //         }
     //     }
+       stage('Execute Ansible playbook') {
+            steps {
+                ansiblePlaybook playbook: 'create_user.yml',
+                 extraVars: [
+                            "username: "${params.USERNAME}",
+                            "useremail: "${params.USER_EMAIL}",
+                           ]
+            }
+        }
     
   
 }
