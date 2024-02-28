@@ -6,6 +6,13 @@
   become: true
   vars:
     ansible_python_interpreter: /usr/bin/python3
+  
+  tasks:
+    - name: Print Sender's Email ID
+      debug:
+        msg: "Sender's email ID is {{ username }}"
+
+
 
 #   tasks:
 #     # - name: Generate Password
@@ -28,8 +35,3 @@
 #     #     name: "{{ username }}"
 #     #     state: present
 #     #     password: 'Welcome@123456'
-
-  tasks:
-    - name: Print Sender's Email ID
-      debug:
-        msg: "Sender's email ID is {{ username }}"
