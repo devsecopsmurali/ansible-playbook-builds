@@ -1,0 +1,17 @@
+---
+- name: Create IAM User
+  hosts: localhost
+  gather_facts: false
+
+  vars:
+    aws_access_key: "{{ aws_access_key }}"
+    aws_secret_key: "{{ aws_secret_key }}"
+    iam_user_name: "{{ iam_user_name | default('new_user') }}"
+
+  tasks:
+    - name: Create IAM User
+      community.aws.iam_user:
+        name: "{{ iam_user_name }}"
+        state: present
+        access_key: "{{ aws_access_key }}"
+        secret_key: "{{ aws_secret_key }}"

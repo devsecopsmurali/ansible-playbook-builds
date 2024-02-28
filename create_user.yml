@@ -24,8 +24,8 @@
     # - name: Print Sender's Email ID
     #   debug:
     #     msg: "Sender's Email ID: {{ username }}"
-    - name: Create IAM Users
-      iam_user:
-        name: "{{ username }}"
-        state: present
-        password: 'Welcome@123456'
+    # - name: Create IAM Users
+    #   iam_user:
+    #     name: "{{ username }}"
+    #     state: present
+    #     password: 'Welcome@123456'
