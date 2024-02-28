@@ -1,12 +1,11 @@
-# ---
-# - name: Create IAM Users in AWS
-#   hosts: localhost
-#   #connection: local
-#   gather_facts: false
-#   # become: true
-#   # become_method: sudo
-#   vars:
-#     ansible_python_interpreter: /usr/bin/python3
+---
+- name: Create IAM Users in AWS
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  become: true
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
 
 #   tasks:
 #     # - name: Generate Password
@@ -30,11 +29,6 @@
 #     #     state: present
 #     #     password: 'Welcome@123456'
 
-
----
-- hosts: localhost
-  vars:
-    username: "{{ username }}"
   tasks:
     - name: Print Sender's Email ID
       debug:
