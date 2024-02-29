@@ -9,40 +9,16 @@
     #username: "{{ username }}"
   
   tasks:
-    - name: Print Sender's sfas ID
+    - name: Print access key
       debug:
-        msg: "Sender's email ID is {{ aws_access_key_id }}"
-    - name: Print Sender's sfas ID
+        msg: "Profile acces key {{ aws_access_key_id }}"
+    - name: Print Secret key
       debug:
-        msg: "Sender's email ID is {{ aws_secret_access_key }}"
+        msg: "Profile password {{ aws_secret_access_key }}"
     - name: Create IAM User
       iam_user:
         name: "{{ username }}"
         state: present
-        password: "Welcome@1234"
+        password: "Welcome@123456"
         access_key: "{{ aws_access_key_id }}"
         secret_key: "{{ aws_secret_access_key }}"
-
-
-
-#   tasks:
-#     # - name: Generate Password
-#     #   community.general.random_password:
-#     #     length: 12
-#     #     special: yes
-#     #     digits: yes
-#     #     upperalpha: yes
-#     #     loweralpha: yes
-#     #   register: generated_password
-
-#     # - name: Display Generated Password for testing purpose
-#     #   debug:
-#     #     var: generated_password.password
-#     - name: Print Sender's Email ID
-#       debug:
-#         msg: "Sender's Email ID: {{ username }}"
-#     # - name: Create IAM Users
-#     #   iam_user:
-#     #     name: "{{ username }}"
-#     #     state: present
-#     #     password: 'Welcome@123456'
