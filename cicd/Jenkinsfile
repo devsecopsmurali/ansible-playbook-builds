@@ -21,7 +21,7 @@ pipeline {
             steps {
                 script {
                     def username = params.USERNAME
-                    // Rest of your steps using the 'username' variable
+                    def useremail = params.USER_EMAIL
                 }
             }
         }
@@ -44,7 +44,7 @@ pipeline {
             // Send email on success
             //def username = params.USERNAME
             emailext subject: 'Jenkins Build Successful',
-                      body: 'Your build is successful. Congratulations! Username:  ${username}',
+                      body: 'Your build is successful. Congratulations!\nUsername:  ${username}\n UseremailID: ${useremail}',
                       recipientProviders: [[$class: 'CulpritsRecipientProvider']],
                       to: params.USER_EMAIL
         }
