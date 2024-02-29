@@ -40,19 +40,11 @@ pipeline {
 
     post {
         success {
-           emailext subject: 'IAM User Creation Successful',
-    body: '''\
-        <html>
-        <body style="font-family: Arial, sans-serif;">
-            <p>Your IAM user creation is successful. Congratulations!</p>
-            <p><strong>User Name:</strong> ${username}</p>
-            <p><strong>IAM Password:</strong> "Welcome@123456"</p>
-        </body>
-        </html>
-    ''',
-    recipientProviders: [[$class: 'CulpritsRecipientProvider']],
-    to: params.USEREMAIL
-
+            emailext subject: 'IAM User Creation Successful',
+                      body: 'Your IAM user created is successful. Congratulations! \n\n Your User Name:  ${username} \n\n Your Iam Password: "Welcome@123456"',
+                      recipientProviders: [[$class: 'CulpritsRecipientProvider']],
+                      to: params.USEREMAIL
+                      
         }
         failure {
             // Send email on failure
