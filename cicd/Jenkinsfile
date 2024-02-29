@@ -44,12 +44,11 @@ pipeline {
                   mimeType: 'text/html',
                   body: '''<html>
                             <body>
-                                <h2 style="color: #3498db;">IAM User Creation Successful</h2>
-                                <p>Your IAM user creation is successful. Congratulations!</p>
-                                <p><strong>Your User Name:</strong> ${username}</p>
-                                <p><strong>Your IAM Password:</strong> Welcome@123456</p>
+                                <p style="color: #3498db;">Your IAM User Creation Successful. Congratulations!</p>
+                                <p style="color: #3498db;"><strong style="color: #3498db;">Your User Name:</strong> ${username}</p>
+                                <p style="color: #3498db;"><strong style="color: #3498db;">Your IAM Password:</strong> Welcome@123456</p>
                                 <br>
-                                <p>Thank you for using our service!</p>
+                                <p style="color: #3498db;">Thank you for using AWS service!</p>
                             </body>
                           </html>''',
                   recipientProviders: [[$class: 'CulpritsRecipientProvider']],
