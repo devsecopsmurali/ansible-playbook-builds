@@ -13,6 +13,11 @@
       debug:
         msg: "Sender's email ID is {{ username }}"
 
+   - name: Print Sender's asdada ID
+      debug:
+        msg: "Sender's email ID is {{ useremail }}"
+        
+
 
 
 #   tasks:
