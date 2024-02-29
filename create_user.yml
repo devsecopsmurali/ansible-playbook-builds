@@ -11,12 +11,10 @@
   tasks:
     - name: Print Sender's sfas ID
       debug:
+        msg: "Sender's email ID is {{ useremail }}"
+    - name: Print Sender's sfas ID
+      debug:
         msg: "Sender's email ID is {{ username }}"
-
-   - name: Print Sender's asdada ID
-     debug:
-       msg: "Sender's email ID is {{ useremail }}"
-        
 
 
 
