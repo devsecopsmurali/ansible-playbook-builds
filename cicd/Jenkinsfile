@@ -17,7 +17,14 @@ pipeline {
                 git credentialsId: 'Githubcreds', branch: 'create_users', url: 'https://github.com/devsecopsmurali/ansible-playbook-builds.git'
             }
         }
-
+        stage('Example Stage') {
+            steps {
+                script {
+                    def username = params.USERNAME
+                    // Rest of your steps using the 'username' variable
+                }
+            }
+        }
         stage('Execute Ansible playbook') {
             steps {
                 script {
@@ -28,12 +35,7 @@ pipeline {
                     )
                 }
             }
-            steps {
-                script {
-                    def username = params.USERNAME
-                    // Rest of your steps using the 'username' variable
-                }
-            }
+            
         }
     }
 
