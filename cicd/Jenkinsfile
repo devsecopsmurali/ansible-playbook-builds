@@ -45,7 +45,8 @@ pipeline {
                   body: '''<html>
                             <body>
                                 <p style="color: #3498db;">Your IAM User Creation Successful. Congratulations!</p>
-                                <p style="color: #3498db;"><strong style="color: #3498db;">Your User Name:</strong> ${username}</p>
+                                <p style="color: #3498db;">Account ID (12 digits) or account alias: <strong style="color: #3498db;"></strong> 746982785361</p>
+                                <p style="color: #3498db;"><strong style="color: #3498db;">Your IAM User Name:</strong> ${username}</p>
                                 <p style="color: #3498db;"><strong style="color: #3498db;">Your IAM Password:</strong> Welcome@123456</p>
                                 <br>
                                 <p style="color: #3498db;">Thank you for using AWS service!</p>
