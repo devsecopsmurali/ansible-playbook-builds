@@ -6,6 +6,11 @@ pipeline {
         string(name: 'USER_EMAIL', defaultValue: '', description: 'Enter the user email')
     }
 
+    environment {
+        AWS_ACCESS_KEY_ID = credentials('AWS')
+        AWS_SECRET_ACCESS_KEY = credentials('AWS')
+    } 
+
     stages {
         stage('Checkout') {
             steps {
