@@ -24,7 +24,7 @@ pipeline {
                     ansiblePlaybook(
                         playbook: 'create_user.yml',
                         inventory: 'localhost',
-                        extras: "-e 'username=${params.USERNAME}' -e 'useremail=${params.USER_EMAIL}'"
+                        extras: "-e 'username=${params.USERNAME}' -e 'useremail=${params.USER_EMAIL}' -e 'aws_access_key_id=${AWS_ACCESS_KEY_ID}' -e 'aws_secret_access_key=${AWS_SECRET_ACCESS_KEY}'"
                     )
                 }
             }
