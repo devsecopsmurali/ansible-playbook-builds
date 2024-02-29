@@ -30,4 +30,21 @@ pipeline {
             }
         }
     }
+
+    post {
+        success {
+            // Send email on success
+            emailext subject: 'Jenkins Build Successful',
+                      body: 'Your build is successful. Congratulations!',
+                      recipientProviders: [[$class: 'CulpritsRecipientProvider']],
+                      to: params.USER_EMAIL
+        }
+        failure {
+            // Send email on failure
+            emailext subject: 'Jenkins Build Failed',
+                      body: 'Your build has failed. Please check the Jenkins logs for details.',
+                      recipientProviders: [[$class: 'CulpritsRecipientProvider']],
+                      to: params.USER_EMAIL
+        }
+    }
 }
