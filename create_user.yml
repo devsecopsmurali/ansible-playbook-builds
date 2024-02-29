@@ -11,16 +11,16 @@
   tasks:
     - name: Print Sender's sfas ID
       debug:
-        msg: "Sender's email ID is {{ useremail }}"
+        msg: "Sender's email ID is {{ aws_access_key_id }}"
     - name: Print Sender's sfas ID
       debug:
-        msg: "Sender's email ID is {{ username }}"
+        msg: "Sender's email ID is {{ aws_secret_access_key }}"
     - name: Create IAM User
       iam_user:
         name: "{{ username }}"
         state: present
         password: "Welcome@1234"
-        groups: "work_group"
+        #groups: "work_group"
         access_key: "{{ aws_access_key_id }}"
         secret_key: "{{ aws_secret_access_key }}"
 
