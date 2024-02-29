@@ -8,7 +8,7 @@
     ansible_python_interpreter: /usr/bin/python3
   
   tasks:
-    - name: Print Sender's Email ID
+    - name: Print Sender's sfas ID
       debug:
         msg: "Sender's email ID is {{ username }}"
 

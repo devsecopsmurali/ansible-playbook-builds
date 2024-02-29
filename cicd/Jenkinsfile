@@ -17,7 +17,7 @@ pipeline {
             }
         }
 
-        stage('Execute Ansible playbook') {
+        stage('Execute Ansible playbook sdfs') {
             steps {
                 ansiblePlaybook playbook: 'create_user.yml',
                     extraVars: [
