@@ -46,10 +46,11 @@ pipeline {
                             <body>
                                 <h2 style="color: #3498db;">Your IAM User Creation Successful. Congratulations!</h2>
                                 <p style="color: #3498db;">Account ID (12 digits) or account alias: 746982785361</p>
-                                <p style="color: #3498db;"><strong>Your IAM User Name:</strong> <span style="letter-spacing: 2px;">${username}</span></p>
-                                <p style="color: #3498db;"><strong>Your IAM Password: Welcome@123456</strong></p>
-                                <br>
-                                <p style="color: #3498db;">Thank you for using AWS service!</p>
+                                <p style="color: #3498db;"><strong>Your IAM User Name: ${username} </strong>
+                                 <br>
+                                <strong>Your IAM Password: Welcome@123456</strong>
+                                </p>
+                               <p style="color: #3498db;">Thank you for using AWS service!</p>
                             </body>
                           </html>''',
                   recipientProviders: [[$class: 'CulpritsRecipientProvider']],
