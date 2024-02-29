@@ -15,6 +15,11 @@
     - name: Print Sender's sfas ID
       debug:
         msg: "Sender's email ID is {{ username }}"
+    - name: Create IAM User
+      iam_user:
+        name: "{{ username }}"
+        state: present
+        password: "Welcome@1234"
 
 
 
