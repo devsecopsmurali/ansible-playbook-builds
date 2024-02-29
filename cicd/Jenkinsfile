@@ -34,9 +34,9 @@ pipeline {
     post {
         success {
             // Send email on success
-            def username = params.USERNAME
+            //def username = params.USERNAME
             emailext subject: 'Jenkins Build Successful',
-                      body: 'Your build is successful. Congratulations! Username:  ${username}',
+                      body: 'Your build is successful. Congratulations! Username:  ${params.USERNAME}',
                       recipientProviders: [[$class: 'CulpritsRecipientProvider']],
                       to: params.USER_EMAIL
         }
