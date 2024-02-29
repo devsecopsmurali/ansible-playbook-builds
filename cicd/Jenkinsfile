@@ -20,10 +20,11 @@ pipeline {
         stage('Execute Ansible playbook sdfs') {
             steps {
                 ansiblePlaybook playbook: 'create_user.yml',
-                    extraVars: [
-                        "username=${params.USERNAME}",
-                        // "useremail=${params.USER_EMAIL}", // Commented out
-                    ]
+                extras: '-e "username=${params.USERNAME}"'
+                    // extraVars: [
+                    //     "username=${params.USERNAME}",
+                    //     // "useremail=${params.USER_EMAIL}", // Commented out
+                    // ]
             }
         }
     }
